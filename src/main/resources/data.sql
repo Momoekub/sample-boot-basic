@@ -4,13 +4,15 @@ INSERT INTO product (name, price, description, manufactureDate) VALUES ('Mechani
 INSERT INTO product (name, price, description, manufactureDate) VALUES ('Smartphone X', 32900.00, 'Flagship smartphone with OLED display', '2023-01-20');
 INSERT INTO product (name, price, description, manufactureDate) VALUES ('Noise Cancelling Headphones', 5990.00, 'Over-ear headphones with active noise cancellation', '2019-11-05');
 
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Somchai Prasert', '123 Sukhumvit Rd, Bangkok', 'somchai@example.com', '0812345678', '1995-07-12');
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Suda Wong', '45 Changklan Rd, Chiang Mai', 'suda@example.com', '0898765432', '1998-03-05');
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Anan Phongchai', '78 Mittraphap Rd, Khon Kaen', 'anan@example.com', '0851239876', '1988-12-20');
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Kanya Lek', '56 Prachuap Rd, Hua Hin', 'kanya@example.com', '0825551234', '1992-09-18');
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Prasit Jinda', '99 Ratchada Rd, Bangkok', 'prasit@example.com', '0867894561', '2000-06-25');  
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Somchai Prasert', '123 Sukhumvit Rd, Bangkok', 'somchai@example.com', '0812345678', '1995-07-12');
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Suda Wong', '45 Changklan Rd, Chiang Mai', 'suda@example.com', '0898765432', '1998-03-05');
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Anan Phongchai', '78 Mittraphap Rd, Khon Kaen', 'anan@example.com', '0851239876', '1988-12-20');
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Kanya Lek', '56 Prachuap Rd, Hua Hin', 'kanya@example.com', '0825551234', '1992-09-18');
-INSERT INTO customer (name, address, email, phone, birthDay) VALUES ('Prasit Jinda', '99 Ratchada Rd, Bangkok', 'prasit@example.com', '0867894561', '2000-06-25');  
+INSERT INTO CustomerTier (id, name) VALUES (1, 'Bronze');
+INSERT INTO CustomerTier (id, name) VALUES (2, 'Silver');
+INSERT INTO CustomerTier (id, name) VALUES (3, 'Gold');
+INSERT INTO CustomerTier (id, name) VALUES (4, 'Platinum');
+
+
+
+
+INSERT INTO customer (name, address, email, phone, birthDay,customerTier_id) VALUES ('Somchai Prasert', '123 Sukhumvit Rd, Bangkok', 'somchai@example.com', '0812345678', '1995-07-12',1);
+INSERT INTO customer (name, address, email, phone, birthDay, customerTier_id) VALUES ('Somsri Dee', '456 Rama IV Rd, Bangkok', 'somsri@example.com', '0898765432', '1990-05-20', 2);
+INSERT INTO customer (name, address, email, phone, birthDay, customerTier_id) VALUES ('Chaiyo Phetkasem', '789 Phetkasem Rd, Nonthaburi', 'chaiyo@example.com', '0922334455', '1988-11-01', 1);
+INSERT INTO customer (name, address, email, phone, birthDay, customerTier_id) VALUES ('Malee Srichan', '101 Ratchada Rd, Bangkok', 'malee@example.com', '0656789012', '1992-02-28', 3);

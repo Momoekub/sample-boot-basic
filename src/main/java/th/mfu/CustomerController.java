@@ -23,6 +23,11 @@ public class CustomerController {
         @Autowired
         CustomerRepository customerRepo;
 
+
+         @Autowired
+    private CustomerTierRepo tierRepo;
+
+
     @GetMapping ("/customers")
     public ResponseEntity<Collection> getAllCustomers() {
        Collection result = customerRepo.findAll();
@@ -49,11 +54,19 @@ public class CustomerController {
     }
 
 
-    @PostMapping("/customers")
-    public ResponseEntity<String> createCustomer(@RequestBody Customer  customer){
-        customerRepo.save(customer);
-        return new ResponseEntity<String>("Customer created", HttpStatus.CREATED);
+   @PostMapping("/customers")
+public ResponseEntity<String> createCustomer(@RequestBody Customer customer) {
+    if (customer.getCustomerTier() != null && customer.getCustomerTier().getId() != null) {
+       Optional<CustomerTier> tierOpt = tierRepo.findById(customer.getCustomerTier().getId()); 
+        if (tierOpt.isPresent()) {
+            customer.setCustomerTier(tierOpt.get());
+        } else {
+            return new ResponseEntity<>("Customer tier not found", HttpStatus.BAD_REQUEST);
+        }
     }
+    customerRepo.save(customer);
+    return new ResponseEntity<>("Customer created", HttpStatus.CREATED);
+}
 
     @DeleteMapping("/customers/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable Integer id) {
